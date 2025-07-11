@@ -4,10 +4,16 @@ interface TodoProps {
     text: string,
     category: string,
     isCompleted: boolean
-  }
+  };
+  removeTodo: (id: number) => void;
 }
 
-const Todo = ({ todo } : TodoProps) => {
+function Todo({ todo, removeTodo } : TodoProps) {
+
+  // const handleRemoveButton = (event: ReactEventHandler) => {
+
+  // }
+
   return (
     <div className="todo">
       <div className="content">
@@ -18,7 +24,7 @@ const Todo = ({ todo } : TodoProps) => {
       </div>
       <div>
         <button className="complete">Completar</button>
-        <button className="remove">X</button>
+        <button onClick={() => removeTodo(todo.id)} className="remove">X</button>
       </div>
     </div>
   )

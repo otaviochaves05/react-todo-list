@@ -4,12 +4,12 @@ interface TodoFormProps {
   addTodo: (text: string, category: string) => void;
 }
 
-const TodoForm = ({addTodo}: TodoFormProps) => {
+function TodoForm({addTodo}: TodoFormProps) {
   const [text, setText] = useState('')
   const [category, setCategory] = useState('')
 
-  const handleSubmit = (e : React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event : React.FormEvent) => {
+    event.preventDefault();
     if(!text || !category) return
     console.log(text, category)
     addTodo(text, category)
@@ -22,8 +22,8 @@ const TodoForm = ({addTodo}: TodoFormProps) => {
     <div className="todo-form">
         <h2>Criar Tarefa</h2>
         <form onSubmit={handleSubmit}>
-            <input value={text} type="text" placeholder="Digite o título" onChange={(e) => setText(e.target.value)}/>
-            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+            <input value={text} type="text" placeholder="Digite o título" onChange={(event) => setText(event.target.value)}/>
+            <select value={category} onChange={(event) => setCategory(event.target.value)}>
                 <option value="">Selecione uma categoria</option>
                 <option value="Trabalho">Trabalho</option>
                 <option value="Pessoal">Pessoal</option>
