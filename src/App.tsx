@@ -51,7 +51,9 @@ function App() {
       />
       <TodoForm addTodo={addTodo} />
       <div className="todo-list">
-        {todos.map((todo) => (
+        {todos
+        .filter((todo) => todo.text.toLowerCase().includes(search.toLowerCase()))
+        .map((todo) => (
           <Todo
             key={todo.id}
             todo={todo}
