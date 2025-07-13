@@ -1,3 +1,5 @@
+import './todo.css'
+
 interface TodoProps {
   todo: { 
     id: number,

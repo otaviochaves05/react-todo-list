@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 
+import './todoForm.css'
+
 interface TodoFormProps {
   addTodo: (text: string, category: string) => void;
 }

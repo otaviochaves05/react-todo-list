@@ -1,7 +1,10 @@
 import { useState } from "react"
+
+import Todo from "./components/todo"
+import TodoForm from "./components/todoForm"
+import Search from "./components/search";
+
 import './App.css'
-import Todo from "./components/Todo"
-import TodoForm from "./components/TodoForm"
 
 interface TodoDTO {
   id: number;
@@ -12,6 +15,7 @@ interface TodoDTO {
 
 function App() {
   const [todos, setTodos] = useState<TodoDTO[]>([])
+  const [search, setSearch] = useState<string>("")
 
   const addTodo = (text: string, category: string) => {
 
@@ -41,8 +45,12 @@ function App() {
   return (
     <div className="app">
       <h1>Lista de tarefas</h1>
+      <Search
+        search={search}
+        setSearch={setSearch}
+      />
+      <TodoForm addTodo={addTodo} />
       <div className="todo-list">
-        <TodoForm addTodo={addTodo} />
         {todos.map((todo) => (
           <Todo
             key={todo.id}
